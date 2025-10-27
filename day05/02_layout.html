@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .layout-float{
+            float: left;
+        }
+        .layout-2::after, .layout-3::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .layout-2-1, .layout-2-3{
+            width: 25%;
+        }
+        .layout-2-2{
+            width: 50%;
+        }
+        .layout-3-1, .layout-3-2{
+            width: 50%;
+        }
+        .child{
+            width: 100%;
+            height: 100px;
+        }
+        .child-1{
+            background-color: red;
+        }
+        .child-2-1{
+            background-color: green;
+        }
+        .child-2-2{
+            background-color: blue;
+        }
+        .child-2-3{
+            background-color: burlywood;
+        }
+        .child-3-1{
+            background-color:aqua;
+        }
+        .child-3-2{
+            background-color: blueviolet;
+        }
+        .child-4{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-1">
+        <div class="child child-1"></div>
+    </div>
+    <div class="layout-2">
+        <div class="layout-float layout-2-1">
+            <div class="child child-2 child-2-1"></div>
+        </div>
+        <div class="layout-float layout-2-2">
+            <div class="child child-2 child-2-2"></div>
+        </div>
+        <div class="layout-float layout-2-3">
+            <div class="child child-2 child-2-3"></div>
+        </div>
+    </div>
+    <div class="layout-3">
+        <div class="layout-float layout-3-1">
+            <div class="child child-3 child-3-1"></div>
+        </div>
+        <div class="layout-float layout-3-2">
+            <div class="child child-3 child-3-2"></div>
+        </div>
+    </div>
+    <div class="layout-4">
+        <div class="child child-4"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 70%;
+            border-collapse: collapse;
+        }
+        table th,td{
+            border-left: none;
+            border-right: none;
+            text-align: center;
+        }
+        thead td{
+            font-weight: 700;
+            border-top: 2px solid rgb(0, 124, 133);
+            border-bottom: 2px solid rgb(0, 124, 133);
+            background-color: rgb(255, 200, 0);
+        }
+        tbody tr:nth-child(even){
+            background-color: rgba(0, 200, 255, 0.1);
+        }
+        tfoot td{
+            border-top: 2px solid rgb(0, 124, 133);
+            border-bottom: 2px solid rgb(0, 124, 133);
+        }
+        tfoot td:nth-child(1){
+            font-weight: 700;
+        }
+        table tr:hover{
+            background-color: rgb(0, 200, 255);
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>성적표</caption>
+        <thead>
+            <tr>
+                <td>번호</td>
+                <td>이름</td>
+                <td>성적</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>김철수</td>
+                <td>95</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>이영희</td>
+                <td>88</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>박민수</td>
+                <td>76</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>최지우</td>
+                <td>92</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>정하늘</td>
+                <td>81</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">합계</td>
+                <td>432</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

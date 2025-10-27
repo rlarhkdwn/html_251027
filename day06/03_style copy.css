@@ -1,0 +1,695 @@
+@import url(../day05/reset.css);
+@font-face {
+    font-family: NotoSansKR-VariableFont_wght;
+    src: url(../font/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf);
+}
+body{
+    font-family: "NotoSansKR-VariableFont_wght", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    min-width: 1400px;
+}
+.inner{
+    width: 1328px;
+    margin: 0 auto;
+}
+
+/* header */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    float: left;
+    z-index: 1000;
+    background-color: white;
+}
+header>.header-top>.inner{
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+}
+header>.header-top>.inner>.header-top-left{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+header>.header-top>.inner>.header-top-left>ul{
+    display: flex;
+    justify-content: space-between; 
+}
+header>.header-top>.inner>.header-top-left>ul>li{
+    padding: 4px 12px;
+}
+header>.header-top>.inner>.header-top-left>ul:first-child a{
+    color: gray;
+}
+header>.header-top>.inner>.header-top-left>ul:last-child>li:first-child>a{
+    color: green;
+}
+header>.header-top>.inner>.header-top-left>ul:last-child>li:last-child>a{
+    color: gray;
+}
+header>.header-top>.inner .divider{
+    padding: 4px 0;
+    color: gray;
+}
+
+header>.header-top>.inner>.header-top-right{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+header>.header-top>.inner>.header-top-right>a, #lang{
+    padding: 4px 12px;
+    background-color: transparent;
+    color: gray;
+}
+#lang{
+    border: none;
+    outline: none;
+    color: gray;
+}
+
+.header-main{
+    border-top: 1px solid rgb(208, 208, 208);
+    border-bottom: 1px solid rgb(208, 208, 208);
+}
+header>.header-main>.inner{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+header>.header-main>.inner>.header-main-left{
+    display: flex;
+    justify-content: space-between;
+}
+header>.header-main>.inner>.header-main-left>.logo{
+    width: 98px;
+    height: 74px;
+    padding-right: 50px;
+}
+header>.header-main>.inner>.header-main-left>ul{
+    display: flex;
+    justify-content: space-between;
+}
+header>.header-main>.inner>.header-main-left>ul>li{
+    line-height: 74px;
+    padding: 0 50px;
+}
+header>.header-main>.inner>.header-main-left>ul>li>a{
+    color: black;
+}
+header>.header-main>.inner>.header-main-right>a>button{
+    width: 90px;
+    height: 36px;
+    margin-top: 19px;
+    border-radius: 18px;
+    border: 1px solid green;
+    background-color: transparent;
+    color: green;
+}
+header>.header-main>.inner>.header-main-right>a>button:hover{
+    cursor: pointer;
+}
+
+
+header>.header-footer svg{
+    position: fixed;
+    bottom: 10px;
+    right: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+    background-color: white;
+
+    width: 14px;
+    height: 14px;
+    padding: 13px;
+}
+
+/* main */
+
+/* slide */
+main>.slide{
+    background-image: url(../image/민속박물관/slide.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 850px;
+
+}
+main>.slide>.inner>h1{
+    position: absolute;
+    top: 300px;
+
+    color: white;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+main>.slide>.inner>p{
+    position: absolute;
+    top: 480px;
+
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+main>.slide>.inner>.calendar{
+    position: absolute;
+    top: 730px;
+
+    height: 80px;
+
+    display: flex;
+    justify-content: space-between;
+}
+main>.slide>.inner>.calendar>.p-box{
+    box-sizing: border-box;
+    width: 1060px;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+}
+main>.slide>.inner>.calendar>.p-box>.icon-clock{
+    margin-left: 150px;
+}
+main>.slide>.inner>.calendar>.p-box>.title{
+    margin-left: 5px;
+    font-size: 20px;
+}
+main>.slide>.inner>.calendar>.p-box>.week-category{
+    margin-left: 85px;
+    font-size: 18px;
+}
+main>.slide>.inner>.calendar>.p-box>.time{
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+main>.slide>.inner>.calendar>button{
+    box-sizing: border-box;
+    width: 268px;
+    background-color: #005e3c;
+    border: none;
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    --iconColor: white;
+}
+main>.slide>.inner>.calendar>button>p{
+    margin-left: 5px;
+    line-height: 80px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* content1 */
+main>.con1{
+    padding: 80px 0 150px;
+}
+main>.con1>.inner>.con1-top{
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 16px;
+    border-bottom: 2px solid black;
+}
+main>.con1>.inner>.con1-top>h2{
+    font-size: 32px;
+    font-weight: 700;
+}
+main>.con1>.inner>.con1-top>.icon-plus>a>svg{
+    width: 32px;
+    height: 32px;
+}
+main>.con1>.inner>.main>.box{
+    display: flex;
+    justify-content: left;
+
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-bottom: 2px;
+    border-bottom: 2px solid gray;
+}
+main>.con1>.inner>.main>.box>img{
+    width: 320px;
+    height: 200px;
+}
+main>.con1>.inner>.main>.box>.p-box{
+    padding-left: 32px;
+}
+main>.con1>.inner>.main>.box>.p-box>h3{
+    font-size: 24px;
+    font-weight: 700;
+    padding: 15px 0;
+}
+main>.con1>.inner>.main>.box>.p-box>h4{
+    font-size: 16px;
+    padding: 5px 0;
+}
+main>.con1>.inner>.main>.box>.p-box>p{
+    font-size: 14px;
+    padding: 20px 0;
+    color: gray;
+}
+main>.con1>.inner>.main>.box>.p-box>.link>a{
+    display: flex;
+    justify-content: left;
+    padding-top: 10px;
+}
+main>.con1>.inner>.main>.box>.p-box>.link>a>span{
+    font-size: 12px;
+    color: black;
+    line-height: 16px;
+}
+main>.con1>.inner>.main>.box>.p-box>.link>a>svg{
+    padding-left: 5px;
+}
+
+
+/* content2 */
+main>.con2{
+    background-color: #e7e7d6;
+}
+main>.con2>.inner>.top{
+    height: 311px;
+}
+main>.con2>.inner>.top>h2{
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 130px;
+}
+main>.con2>.inner>.top>ul{
+    display: flex;
+    justify-content: center;
+}
+main>.con2>.inner>.top>ul>li{
+    padding: 40px 5px;
+    font-size: 20px;
+}
+main>.con2>.inner>.top>ul>li:first-child>a{
+    color: green;
+}
+main>.con2>.inner>.top>ul>li:last-child>a{
+    color: gray;
+}
+main>.con2>.inner>.main{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+main>.con2>.inner>.main img{
+    width: 318px;
+    height: 400px;
+}
+main>.con2>.inner>.main>a{
+    margin: 0 10px;
+}
+main>.con2>.inner>.main>a>.age{
+    margin: 15px 0;
+    padding: 6px 8px;
+    background-color: rgb(103, 207, 172);
+    display: inline-block;
+    color: white;
+}
+main>.con2>.inner>.main>a>.title{
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+main>.con2>.inner>.main>a>.date{
+    font-size: 16px;
+    color: gray;
+    letter-spacing: -1px;
+}
+main>.con2>.inner>.bottom{
+    text-align: center;
+    padding-bottom: 100px;
+}
+main>.con2>.inner>.bottom>a>button{
+    background-color: transparent;
+    border: 1px solid gray;
+    padding: 10px 54px;
+    font-size: 16px;
+}
+main>.con2>.inner>.bottom>a>button:hover{
+    cursor: pointer;
+}
+
+
+/* content3 */
+main>.con3>.inner{
+    width: 1072px;
+}
+main>.con3{
+    background-color: rgb(228, 228, 228);
+}
+main>.con3>.inner>.top{
+    height: 311px;
+}
+main>.con3>.inner>.top>h2{
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 130px;
+}
+main>.con3>.inner>.top>p{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 30px;
+    color: gray;
+}
+main>.con3>.inner>.main{
+    display: flex;
+    justify-content: left;
+    background-color: white;
+}
+main>.con3>.inner>.main>.img-box{
+    background-image: url(../image/민속박물관/imgi_48_main_deco_bg_02-BHVkLLTU.jpg);
+    background-size: cover;
+
+    width: 423px;
+    height: 456px;
+
+    position: relative;
+}
+main>.con3>.inner>.main>.img-box>img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 336px;
+}
+main>.con3>.inner>.main>.p-box{
+    padding-top: 60px;
+    padding-left: 80px;
+    line-height: 1.5; 
+}
+main>.con3>.inner>.main>.p-box>h3{
+    font-size: 34px;
+    font-weight: 700;
+}
+main>.con3>.inner>.main>.p-box>p{
+    font-size: 14px;
+    padding: 20px 0;
+    color: gray;
+}
+main>.con3>.inner>.main>.p-box>.info{
+    display: flex;
+    justify-content: left;
+    padding-top: 25px;
+    padding-left: 5px;
+}
+main>.con3>.inner>.main>.p-box>.info>.level{
+    display: flex;
+    align-items: center;
+}
+main>.con3>.inner>.main>.p-box>.info>.level>.icon-star{
+    background-color: rgba(128, 128, 128, 0.1);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+    text-align: center;
+    line-height: 38px;
+}
+main>.con3>.inner>.main>.p-box>.info>.level>span{
+    padding: 0 15px;
+    font-weight: 500;
+}
+main>.con3>.inner>.main>.p-box>.info>.level svg{
+    padding: 0 1px;
+}
+main>.con3>.inner>.main>.p-box>.info>.level>.icon-star-o>svg{
+    fill: #ffa600;
+    border: none;
+}
+main>.con3>.inner>.main>.p-box>.info>.level>.icon-star-x>svg{
+    padding-bottom: 1px;   
+}
+main>.con3>.inner>.main>.p-box>.info>.duration{
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+main>.con3>.inner>.main>.p-box>.info>.duration>.icon-duration{
+    padding-top: 3px;
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 50%;
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    line-height: 35px;
+}
+main>.con3>.inner>.main>.p-box>.info>.duration>.p1{
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0 15px 3px;
+}
+main>.con3>.inner>.main>.p-box>.info>.duration>.p2{
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 3px;
+    color: gray;
+}
+main>.con3>.inner>.main>.p-box>.button-box{
+    padding: 50px 0;
+}
+
+main>.con3>.inner>.main>.p-box>.button-box>a>button{
+    font-size: 16px;
+    background-color: #005e3c;
+    color: white;
+    border: none;
+    padding: 12px 46px;
+}
+main>.con3>.inner>.main>.p-box>.button-box>a>button:hover{
+    cursor: pointer;
+}
+main>.con3>.inner>.bottom{
+    text-align: center;
+    padding: 100px 0;
+}
+main>.con3>.inner>.bottom>a>button{
+    background-color: transparent;
+    border: 1px solid gray;
+    padding: 10px 54px;
+    font-size: 16px;
+}
+main>.con3>.inner>.bottom>a>button:hover{
+    cursor: pointer;
+}
+
+/* content4 */
+main>.con4>.inner>.main{
+    display: flex;
+    justify-content: space-between;
+    padding: 120px 0;
+}
+main>.con4>.inner>.main>.img-box1{
+    position: relative;
+    width: 656px;
+    height: 280px;
+    padding: 0 auto;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url(../image/민속박물관/전통혼례장.jpg);
+    background-size: cover;
+}
+main>.con4>.inner>.main>.img-box1:hover{
+    cursor: pointer;
+}
+main>.con4>.inner>.main>.img-box2{
+    position: relative;
+    width: 656px;
+    height: 280px;
+    padding: 0 auto;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url(../image/민속박물관/민속기념품점.jpg);
+    background-size: cover;
+}
+main>.con4>.inner>.main>.img-box2:hover{
+    cursor: pointer;
+}
+main>.con4>.inner>.main .text-box{
+    position: absolute;
+    top: 176px;
+    left: 35px;
+}
+main>.con4>.inner>.main .text-box>h3{
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+main>.con4>.inner>.main .text-box>p{
+    font-size: 16px;
+    color: white;
+    margin-top: 16px;
+}
+
+
+
+main>.con4>.bottom{
+    display: flex;
+    justify-content: center;
+}
+main>.con4>.bottom>a:first-child{
+    background-color: #005e3c;
+    width: 50%;
+    height: 100px;
+    display: flex;
+    justify-content: right;
+}
+main>.con4>.bottom>a:last-child{
+    background-color: #00472d;
+    width: 50%;
+    height: 100px;
+}
+main>.con4>.bottom .link-bar{
+    width: 614px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+main>.con4>.bottom .link-bar1{
+    padding-right: 50px;
+    position: relative;
+}
+main>.con4>.bottom .link-bar2{
+    padding-left: 50px;
+    position: relative;
+}
+main>.con4>.bottom .icon-i{
+    --iconColor: white;
+    border-radius: 50%;
+}
+main>.con4>.bottom .icon-map{
+    --iconColor: white;
+    border-radius: 50%;
+}
+main>.con4>.bottom .icon-arrow{
+    --iconColor: white;
+    border-radius: 50%;
+}
+main>.con4>.bottom .icon-i-box{
+    width: 48px;
+    height: 48px;
+    background-color: #00472d;
+    border-radius: 50%;
+    display: flex;           
+    align-items: center;
+    justify-content: center;
+}
+main>.con4>.bottom .icon-map-box{
+    width: 48px;
+    height: 48px;
+    background-color: #003622;
+    border-radius: 50%;
+    display: flex;           
+    align-items: center;
+    justify-content: center;
+}
+main>.con4>.bottom span{
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+main>.con4>.bottom .left .icon-arrow-box{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    transform: translate(-50px, -50%);
+}
+main>.con4>.bottom .right .icon-arrow-box{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+
+/* footer */
+footer>.inner{
+    padding: 50px 0;
+}
+footer>.inner>.top{
+    display: flex;
+    justify-content: space-between;
+}
+footer>.inner>.top>.right>.top>ul{
+    display: flex;
+    justify-content: space-between;
+}
+footer>.inner>.top>.right>.top>ul>li{
+    padding: 0 10px;
+    font-size: 15px;
+}
+footer>.inner>.top>.right>.top>ul>li>a{
+    color: black;
+}
+footer>.inner>.top>.right>.top>ul>li:nth-child(5)>a{
+    color: blue;
+}
+footer>.inner>.top>.right>.bottom{
+    margin-top: 24px;
+    display: flex;
+    justify-content: right;
+}
+footer>.inner>.top>.right>.bottom svg{
+    margin: 0 7px;
+}
+
+
+footer>.inner>.bottom{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+footer>.inner>.bottom>.info-box>span{
+    font-size: 14px;
+    font-weight: 500;
+}
+footer>.inner>.bottom>.info-box>.address{
+    margin: 14px 0;
+    font-size: 14px;
+    color: gray;
+    line-height: 1.2;
+}
+footer>.inner>.bottom>.info-box>.copyright{
+    font-size: 14px;
+    color: rgb(114, 114, 114);
+    display: block;
+    margin-top: 24px;
+}
+footer>.inner>.bottom>.mark-box{
+    display: flex;
+    justify-content: space-between;
+}
+footer>.inner>.bottom>.mark-box>.mark-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer>.inner>.bottom>.mark-box>.mark-item1>img{
+    width: 38px;
+    height: 38px;
+}
+footer>.inner>.bottom>.mark-box>.mark-item2>img{
+    width: 44px;
+    height: 30px;
+}
+footer>.inner>.bottom>.mark-box>.mark-item1>p{
+    margin-right: 30px;
+}
+footer>.inner>.bottom>.mark-box>.mark-item>p{
+    font-size: 10px;
+    color: gray;
+    line-height: 1.5;
+    margin-left: 10px;
+}

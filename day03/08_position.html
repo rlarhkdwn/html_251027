@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .p-box::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .box{
+            float: left;
+            margin: 0 10px;
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+        .box:hover{
+            transform: translate(10px, 10px);
+            background-color: rgb(211, 56, 56);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <div class="box">T</div>
+        <div class="box">H</div>
+        <div class="box">A</div>
+        <div class="box">N</div>
+        <div class="box">K</div>
+        <div class="box">S</div>
+    </p>
+</body>
+</html>

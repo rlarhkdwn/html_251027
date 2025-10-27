@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" sub-img1="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        min-width : 작은 것부터 점차 크게
+    -->
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            height: 60px;
+            background-color: rgb(179, 179, 179);
+            line-height: 60px;
+            font-weight: 700;
+            padding-left: 40px;
+            box-sizing: border-box;
+        }
+        .main-img{
+            height: 300px;
+            background-image: url(../image/배경.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .descripstion{
+            background-color: azure;
+            padding: 30px 40px;
+            box-sizing: border-box;
+        }
+        .descripstion>p{
+            margin: 0;
+        }
+        .descripstion>#p1{
+            font-size: 15px;
+            color: gray;
+        }
+        .descripstion>#p2{
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .descripstion>#p3{
+            margin: 30px 0;
+        }
+        .sub-img1{
+            height: 350px;
+            background-image: url(../image/bag.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .sub-img2{
+            height: 300px;
+            background-image: url(../image/남산타워.jpg);
+            background-position: center;
+            background-size: cover;
+
+            position: relative;
+        }
+        .sub-img2>a{
+            color: white;
+            text-decoration: none;
+            border: 4px solid white;
+            padding: 10px 40px;
+            
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .sub-img3{
+            height: 250px;
+            background-image: url(../image/에펠탑.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .footer{
+            height: 60px;
+            background-color: rgb(179, 179, 179);
+        }
+        @media screen and (min-width : 800px) {
+            .sub-img1{
+                width: 50%;
+                height: 500px;
+                float: left;
+            }
+            .sub-img2{
+                width: 50%;
+                height: 250px;
+                float: right
+            }
+            .sub-img3{
+                width: 50%;
+                height: 250px;
+                float: right;
+            }
+            .footer{
+                clear: both;
+            }
+        }
+        @media screen and (min-width : 1200px) {
+            .main-img{
+                width: 50%;
+                height: 843px;
+                float: left;
+            }
+            .descripstion{
+                width: 50%;
+                height: 421px;
+                float: right;
+            }
+            .sub-img1{
+                width: 25%;
+                height: 422px;
+                float: left;
+            }
+            .sub-img2{
+                width: 25%;
+                height: 211px;
+                float: right
+            }
+            .sub-img3{
+                width: 25%;
+                height: 211px;
+                float: right;
+            }
+            .footer{
+                clear: both;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">IN'O</div>
+    <div class="main-img"></div>
+    <div class="descripstion">
+        <p id="p1">Portfolio</p>
+        <p id="p2">Make Hardware Soft</p>
+        <p id="p3">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also</p>
+    </div>
+    <div class="sub-img1"></div>
+    <div class="sub-img2">
+        <a href="">VIEW MORE</a>
+    </div>
+    <div class="sub-img3"></div>
+    <div class="footer"></div>
+</body>
+</html>

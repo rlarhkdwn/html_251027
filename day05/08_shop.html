@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        @font-face {
+            font-family: "Dongle";
+            src: url(../font/Dongle/Dongle-Regular.ttf);
+        }
+        body{
+            font-family: "Dongle", sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            font-style: normal;
+
+            min-width: 900px;
+        }
+        .top-container{
+            display: flex;
+            justify-content:space-between;
+            
+            padding: 20px 40px;
+            font-size: 30px;
+        }
+        h1{
+            color: black;
+        }
+        .menu{
+            display: flex;
+        }
+        .menu>a{
+            color: black;
+            margin-left: 20px;
+        }
+        .main-img{
+            width: 100%;
+        }
+        h2{
+            text-align: center;
+            margin-top: 40px;
+            font-size: 50px;
+        }
+        .product-line{
+            display: flex;
+            justify-content:space-around;
+
+            width: 1000px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        .product{
+            width: 200px;
+            text-align: center;
+
+            position: relative;
+        }
+        .product>h3{
+            margin-top: 20px;
+        }
+        .product>.hidden-text{
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            color: rgba(48, 62, 255, 0);
+        }
+        .product>.price{
+            margin-top: 30px;
+        }
+        .product>img{
+            width: 200px;
+            height: auto;
+        }
+        .product:hover{
+            transform: scale(110%);
+            box-shadow: 0 0 5px 5px rgba(150, 150, 150, 0.5);
+        }
+        .product:hover .hidden-text{           
+            color: rgba(48, 62, 255, 1);
+        }
+        .footer{
+            height: 60px;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+        .footer>a{
+            width: 60px;
+            color: black;
+            text-align: center;
+        }
+        .footer>a:hover{
+            transform: scale(110%);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <h1>SIMPLE SHOP</h1>
+        <div class="menu">
+            <a href="">Content</a>
+            <a href="">Shop</a>
+            <a href="">Cart</a>
+            <a href="">Login</a>
+        </div>
+    </div>
+    <img class="main-img" src="../image/그래픽카드mian.jpg" alt="메인 이미지">
+    <h2>Our New Product</h2>
+    <div class="product-container">
+        <div class="product-line">
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드1.jpg" alt="그래픽카드1">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>MSI 지포스 RTX 3050 벤투스 2X E OC D6 6GB</h3>
+                    <p class="price">261,500</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드2.jpg" alt="그래픽카드2">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>ASUS ASUS PRIME 지포스 RTX 5070 Ti D7 16GB 인텍앤컴퍼니</h3>
+                    <p class="price">1,389,000</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드3.jpg" alt="그래픽카드3">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>ASUS DUAL 지포스 RTX 5050 D7 8GB 인텍앤컴퍼니단품</h3>
+                    <p class="price">399,000</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-line">
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드4.jpg" alt="그래픽카드4">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>MSI 지포스 RTX 5060 Ti 벤투스 2X OC 플러스 D7 16GB</h3>
+                    <p class="price">679,000</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드5.jpg" alt="그래픽카드5">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>MSI 지포스 RTX 3050 벤투스 2X XS 8G OC</h3>
+                    <p class="price">314,000</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드6.jpg" alt="그래픽카드6">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>MSI 지포스 RTX 5060 게이밍 OC D7 8GB 트윈프로져</h3>
+                    <p class="price">489,000</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-line">
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드7.jpg" alt="그래픽카드7">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>MSI 지포스 RTX 5060 게이밍 OC D7 8GB 트윈프로져</h3>
+                    <p class="price">491,500</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드8.jpg" alt="그래픽카드8">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>갤럭시 GALAX 지포스 RTX 5060 WHITE OC D7 8GB</h3>
+                    <p class="price">506,000</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드9.jpg" alt="그래픽카드9">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>ZOTAC GAMING 지포스 RTX 3050 ECO D6 8GB단일상품</h3>
+                    <p class="price">290,000</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-line">
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드10.jpg" alt="그래픽카드10">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>갤럭시 GALAX 지포스 RTX 50 시리즈 그래픽카드</h3>
+                    <p class="price">495,000</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드11.jpg" alt="그래픽카드11">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>갤럭시 GALAX 지포스 RTX 3070 EX WHITE OC D6 8GB LHR 중고 그래픽카드</h3>
+                    <p class="price">349,000</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드12.jpg" alt="그래픽카드12">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>[GALAX] 갤럭시 GALAZ 지포스 RTX5060 Ti BLACK 3X D7 16GB DUAL HDMI</h3>
+                    <p class="price">758,000</p>
+                </div>
+            </a>
+        </div>
+        <div class="product-line">
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드13.jpg" alt="그래픽카드13">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>NVIDIA QUADRO P5000 16G 영상편집 렌더링 워크스테이션 작업용 그래픽  카드</div>h3>
+                <p class="price">479,000</p>
+            </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드14.jpg" alt="그래픽카드14">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>COLORFUL 지포스 RTX 5060 토마호크 DUO D7 8GB 피씨디렉트 -M</h3>
+                    <p class="price">456,440</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="product">
+                    <img src="../image/그래픽카드15.jpg" alt="그래픽카드15">
+                    <p class="hidden-text">착한 가격!</p>
+                    <h3>MAXSUN 지포스 RTX3050 터미네이터 D6 6G 디앤디컴</h3>
+                    <p class="price">248,420</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+          </svg>
+        </a>
+        <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+              </svg>
+        </a>
+        <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg>
+        </a>
+    </div>
+</body>
+</html>

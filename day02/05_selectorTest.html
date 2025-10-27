@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .naver > a{
+            color: green;
+        }
+        .google > a{
+            color: brown
+        }
+        .daum > a{
+            color: blue;
+        }
+        ol{
+            list-style: none;
+            padding: 0;
+        }
+        ol>li{
+            font-size: 20px;
+            display: inline; /* block tag 성격을 inline으로 변경 */
+            margin: 10px;
+        }
+        ol>li:nth-child(even){
+            color: red;
+        }
+        ol>li:nth-child(3n){
+            color: green;
+        }
+        ol>li:nth-child(1), li:nth-child(10){
+            font-weight: 700;
+        }
+        ol>li::after{
+            content: " / ";
+        }
+        ol>li:last-child:after{
+            content: "";
+        }
+        /* ol>li:not(:last-child)::after{
+            content: " / ";
+        } */
+    </style>
+</head>
+<body>
+    <!-- 
+        div를 3개 만들어
+        naver, google, daum 사이트에 연결되게 하고,
+        naver => 초록색 글자 / 각자 다른색 글자로 만들어주기
+
+        :first-child / last-child : 첫번째요소, 마지막요소
+        :after / :before : ~뒤에, ~앞에 가상요소를 삽입
+    -->
+    <div class="naver"><a href="http://www.naver.com" target="_blank">naver</a></div>
+    <div class="google"><a href="https://www.google.com" target="_blank">google</a></div>
+    <div class="daum"><a href="https://www.daum.net" target="_blank">daum</a></div>
+
+    <!-- 
+        전체 글자 크기 20px
+        짝수 : 빨간색
+        3, 6, 9 : 초록색
+        1, 10 : 굵게
+    -->
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ol>
+</body>
+</html>

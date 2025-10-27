@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        이름, 국어, 영어, 수학 점수를 입력받고 계산 버튼을 누르면 합계와 평균, 평균이 80 이상이면 합격도 같이 출력
+        국어, 영어, 수학의 값이 0~100 사이의 값이 아니라면 alert창을 띄워 안내
+    -->
+    <fieldset>
+        <legend>성적 계산기</legend>
+        이름: <input type="text" id="name" placeholder="이름 입력..."><br>
+        국어: <input type="text" id="kor" placeholder="국어 입력..."><br>
+        영어: <input type="text" id="eng" placeholder="영어 입력..."><br>
+        수학: <input type="text" id="math" placeholder="수학 입력..."><br>
+        <button onclick="calc()">계산하기</button>
+    </fieldset>
+
+    <ul id="ul"></ul>
+    
+    <script>
+        function calc(){
+            const name = document.getElementById('name');
+            const kor = document.getElementById('kor');
+            const eng = document.getElementById('eng');
+            const math = document.getElementById('math');
+
+            let result = myFunc1(kor.value, eng.value, math.value);
+            if (!result) {
+                document.getElementById('ul').innerHTML = '';
+                return;
+            }
+
+            let sum = Number(kor.value) + Number(eng.value) + Number(math.value);
+            let avg = (sum / 3).toFixed(2);
+
+            document.getElementById('ul').innerHTML = `
+                <li>이름: ${name.value}</li>
+                <li>국어: ${kor.value}점 | 영어: ${eng.value}점 | 수학: ${math.value}</li>
+                <li>합계: ${sum}점</li>
+                <li>평균: ${avg}점</li>
+                <li>합격/불합격: ${avg >= 80.00 ? '합격' : '불합격'}</li>
+            `;
+        }
+
+        function myFunc1(kor, eng, math){
+            let result = myFunc2(kor)
+            if (!result) {
+                document.getElementById('kor').value = '';                
+                alert('국어점수는 0부터 100사이의 숫자를 입력할 수 있습니다.');
+                return false
+            }
+            result = myFunc2(eng)
+            if (!result) {
+                document.getElementById('eng').value = '';                
+                alert('영어점수는 0부터 100사이의 숫자를 입력할 수 있습니다.');
+                return false
+            }
+            result = myFunc2(math)
+            if (!result) {
+                document.getElementById('math').value = '';                
+                alert('수학점수는 0부터 100사이의 숫자를 입력할 수 있습니다.');
+                return false
+            }
+            return true;
+        }
+
+        function myFunc2(num){
+            if (num.replaceAll(' ','') === ''){
+                return false;
+            }
+            if (num >= 0 && num <= 100){
+                return true;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>
