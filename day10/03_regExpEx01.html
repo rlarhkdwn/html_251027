@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    파일명 : <input type="text" id="fileName">
+    <button type="button" id="btn">확인</button>
+    <h3 id="result"></h3>
+
+    <script>
+        // input 태그에 파일명.확장자 형태로 입력하여 확인버튼을 클릭하면 이미지 파일인지 아닌지 검사
+        // 이미지 파일이면 '정상파일입니다.' - green
+        // 아니면 '이미지 파일만 가능합니다.' - red
+        // /\.(jpg|gif|png|jpeg)$/i
+
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let inputFile = document.getElementById('fileName');
+            
+            if (inputFile.value.match(/\.(jpg|gif|png|jpeg)$/i)){
+                document.getElementById('result').style = 'color: green;';
+                document.getElementById('result').innerText = '정상파일입니다.';
+            } else {
+                document.getElementById('result').style = 'color: red;';
+                document.getElementById('result').innerText = '이미지 파일만 가능합니다.';
+            }
+        });
+        
+    </script>
+</body>
+</html>

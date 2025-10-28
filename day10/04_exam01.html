@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+        }
+        .scissors{
+            background-image: url(../image/가위.jpg);
+
+        }
+        .rock{
+            background-image: url(../image/바위.jpg);
+
+        }
+        .paper{
+            background-image: url(../image/보.jpg);
+
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        가위바위보 이미지를 버튼태그에 넣어 선택아여 가위바위보의 승률 계산
+    -->
+    <button class="scissors" onclick="game(0)"></button>
+    <button class="rock" onclick="game(1)"></button>
+    <button class="paper" onclick="game(2)"></button>
+    
+    <h3 id="result"></h3>
+    
+    <!-- 
+        player : 가위 / com : 바위 (패)
+        현재 전적
+        승 : 9 / 무 : 6 / 패 : 5
+        승률 : 45.00%
+    -->
+    <script>
+        const comArr = [];
+        const playerArr = [];
+        const arr = ['가위', '바위', '보'];
+        let win = 0;
+        let lose = 0;
+        let draw = 0;
+        let winningRate = 0.00;
+
+        function game(player){  
+            let com = Math.floor(Math.random() * 3);
+            let result = '';
+            if (player - com == 1 || player - com == -2){
+                win++;
+                result = '승';
+            }
+            else if (player - com == -1 || player - com == 2){
+                lose++;
+                result = '패';
+            }
+            else {
+                draw++;
+                result = '무';
+            }
+
+            winningRate = Math.floor(win / (win + draw + lose) * 100, 2);
+            let str = `player : ${arr[player]} / com : ${arr[com]}, (${result})<br>`;
+            str += `현재 전적<br>`;
+            str += `승 : ${win} / 무 : ${draw} / 패 : ${lose}<br>`;
+            str += `승률 : ${winningRate}%`;
+            
+            document.getElementById('result').innerHTML = str;
+        };
+    </script>
+</body>
+</html>
