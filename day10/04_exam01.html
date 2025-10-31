@@ -74,7 +74,7 @@
                 result = '무';
             }
 
-            winningRate = Math.floor(win / (win + draw + lose) * 100, 2);
+            winningRate = Math.floor(win / (win + draw + lose) * 100);
             let str = `player : ${arr[player]} / com : ${arr[com]}, (${result})<br>`;
             str += `현재 전적<br>`;
             str += `승 : ${win} / 무 : ${draw} / 패 : ${lose}<br>`;

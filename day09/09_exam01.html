@@ -52,7 +52,7 @@
         };
         
         document.getElementById('btn').addEventListener('click', ()=>{
-            document.getElementById('result').innerText = Math.floor((win / (10 - draw)) * 100, 2);
+            document.getElementById('result').innerText = Math.floor((win / (10 - draw)) * 100);
             document.getElementById('ol').innerHTML = str + `win : ${win}, lose : ${lose}, draw : ${draw}`;
         });
     </script>

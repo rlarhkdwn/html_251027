@@ -17,7 +17,7 @@
     <button id="btn-answer">정답 확인</button>
     <h3 id="printResult"></h3>
     <script>
-        const quizBank = [];
+        const quizBank = []; // 모든 문제 보관
         for(let i = 2; i <= 9; i++){
             for(let j = 1; j <= 9; j++){
                 let quiz = {
@@ -37,7 +37,7 @@
             }
 
             quizArr.length = 0; // 배열 비우기
-            getQuiz(quizArr, count);
+            getQuiz(quizArr, count); // 문제 받아오기
             
             let str = '';
             quizArr.forEach((v, i)=>{

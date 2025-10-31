@@ -60,7 +60,7 @@
                 count++;
             });
 
-            avg = Math.floor(sum / count, 2);
+            avg = Math.floor(sum / count);
             pNp = avg >= 60.00 ? 'Pass' : 'nonPass';
 
             document.getElementById('h3').innerText = `합계 : ${sum}점\n평균 : ${avg}점\n합격여부 : ${pNp}`;
