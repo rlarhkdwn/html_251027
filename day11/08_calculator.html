@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="08_calculatorStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h3 id="result"></h3>
+        <div class="line">
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="+">+</button>
+        </div>
+        <div class="line">
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="-">-</button>
+        </div>
+        <div class="line">
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="x">x</button>
+        </div>
+        <div class="line">
+            <button id=".">.</button>
+            <button id="0">0</button>
+            <button id="=">=</button>
+            <button id="÷">÷</button>
+        </div>
+        <button id="c">c</button>
+    </div>
+    <script>
+        const result = document.getElementById('result');
+        let inputArr = []; // 숫자, 연산자 담을 배열
+        let num = ''; // 연산자와 연산자 사이에 입력되는 숫자를 담을 변수
+        let str = '';
+        let firstInput = true;
+        const op = ['+', '-', 'x', '÷'];
+        document.querySelector('.container').addEventListener('click', (e)=>{
+            let input = e.target.id;
+
+            if (result.innerText == 'error' || result.innerText == '오류') {
+                result.innerText = '';
+                result.style.color = 'black';
+            }
+            
+            // 숫자
+            if (!isNaN(Number(input))) {
+                if (firstInput) {
+                    firstInput = false;
+                    result.innerText = '';
+                    num = '';
+                }
+                result.innerText += input;
+                num += input;
+                result.scrollLeft = result.scrollWidth;
+                return;
+            }
+
+            // .
+            if (input == '.') {
+                if (!num.includes('.')) { // 소수점은 최대 1회 사용
+                    if (firstInput) {
+                        result.innerText = '';
+                        num = '';
+                        firstInput = false;
+                    }
+                    if (num == '') { // 정수부분이 없으면 0 추가
+                        result.innerText += '0';
+                        num += '0';
+                    }
+                    result.innerText += input;
+                    num += input;
+                }
+                result.scrollLeft = result.scrollWidth;
+                return;
+            }
+
+            // +, -, x, ÷
+            if (op.includes(input)) {
+                if (inputArr.length == 0 && num == '') { // 연산자 첫 입력 방지
+                    return; 
+                }
+                
+                if (op.includes(inputArr[inputArr.length-1]) && num == '') { // 연달아서 연산자가 나오는 경우 덮어쓰기
+                    inputArr.pop();
+                    inputArr.push(input);
+                    result.innerText = result.innerText.slice(0, -1) + input;
+                    result.scrollLeft = result.scrollWidth;
+                    return;
+                }
+
+                firstInput = false;
+                result.innerText += input;
+                inputArr.push(Number(num)); // 연산자가 입력되면 숫자를 배열에 저장
+                inputArr.push(input); // 연산자 저장
+                num = ''; // 초기화
+                result.scrollLeft = result.scrollWidth;
+            }
+
+            // =
+            if (input == '=') {
+                if (num == '') { // 연산자 입력후 바로 = 입력 방지
+                    return;
+                }
+                inputArr.push(Number(num)); // 마지막 숫자 저장
+                num = ''; // 초기화
+                firstInput = true;
+                if (checkZeroDivision()) {
+                    result.innerText = 'error';
+                    result.style.color = 'red';
+                    inputArr = [];
+                    return;
+                };
+                let total = calc();
+                inputArr = [];
+                num = String(total);
+                result.innerText = total;
+                result.scrollLeft = result.scrollWidth;
+            }
+
+            // c
+            if (input == 'c') { // 초기화
+                result.innerText = '';
+                inputArr = [];
+                num = '';
+                firstInput = true;
+            }
+            console.log(inputArr)
+        });
+
+        function checkZeroDivision() {
+            return inputArr.some((v, i, a) => v == '÷' && Number(a[i+1]) == '0');
+        }
+
+        // -, ÷를 +, x로 바꿔서 계산 ex) 2 - 3 ÷ 4 => 2 + (-3) x (1/4)
+        // 배열을 순회하면서 곱하기를 우선 계산한후 나머지를 덧셈
+        function calc(){
+            inputArr.forEach((v, i, a) => {
+                if (v == '-') {
+                    a[i] = '+';
+                    a[i+1] = -a[i+1];
+                }
+                if (v == '÷') {
+                    a[i] = 'x';
+                    a[i+1] = 1 / a[i+1];
+                }
+            });
+
+            const stack = [];
+            stack.push(inputArr[0]);
+            let idx = 1;
+            while (idx < inputArr.length - 1) { // 곱셈 계산
+                if (inputArr[idx] == '+') {
+                    stack.push(inputArr[idx+1])
+                } else {
+                    stack.push(stack.pop() * inputArr[idx+1]);
+                }
+                idx += 2;
+            }
+
+            // 덧셈 계산
+            let sum = 0;
+            stack.forEach(v => sum += v);
+            
+            return sum;
+        }
+    </script>
+</body>
+</html>

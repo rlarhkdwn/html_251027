@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            margin: 0;
+        }
+        h1{
+            font-size: 70px;
+            margin: 0 10px;
+        }
+        button{
+            display: block;
+            width: 50px;
+            height: 50%;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        button 2개 준비
+        + 숫자 -
+
+        + => 값이 1씩 증가
+        - => 값이 1씩 감소(값이 0이면 더이상 감소 x)
+    -->
+
+    <h1 id="number">0</h1>
+    <div class="button-box">
+        <button type="button" id="up"> + </button>
+        <button type="button" id="down"> - </button>
+    </div>
+
+    <script>
+        const num = document.getElementById('number')
+        document.getElementById('up').addEventListener('click', ()=>{
+            num.innerText = Number(num.innerText) + 1;
+            
+            // 태그 안쪽 글자를 가져오는 방법
+            // innerText : 보여지는 글자만 가져옴 / textContent : display:none인 글자도 가져옴 / innerHTML : 모두 가져옴
+            console.log(num.innerText);
+            console.log(num.textContent);
+        });
+        document.getElementById('down').addEventListener('click', ()=>{
+            if (Number(num.innerText) == 0){
+                return;
+            }
+            num.innerText = Number(num.innerText) - 1;
+        });
+    </script>
+</body>
+</html>

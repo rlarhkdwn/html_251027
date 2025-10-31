@@ -31,9 +31,9 @@
     <!-- 
         가위바위보 이미지를 버튼태그에 넣어 선택아여 가위바위보의 승률 계산
     -->
-    <button class="scissors" onclick="game(0)"></button>
-    <button class="rock" onclick="game(1)"></button>
-    <button class="paper" onclick="game(2)"></button>
+    <button id="0" class="scissors" onclick="game(0)"></button>
+    <button id="1" class="rock" onclick="game(1)"></button>
+    <button id="2" class="paper" onclick="game(2)"></button>
     
     <h3 id="result"></h3>
     
@@ -44,6 +44,12 @@
         승률 : 45.00%
     -->
     <script>
+        document.addEventListener('click', (e)=>{
+            // 모든 화면에 이벤트가 달림
+            console.log(e.target);
+            // game(e.target.id);
+        })
+
         const comArr = [];
         const playerArr = [];
         const arr = ['가위', '바위', '보'];

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h3>문제수: <input type="text" id="count"></h3>
+    <button id="btn-question">문제 출제</button>
+    <div id="quizContainer"></div>
+    <button id="btn-answer">정답 확인</button>
+    <h3 id="printResult"></h3>
+    <script>
+        const quizBank = [];
+        for(let i = 2; i <= 9; i++){
+            for(let j = 1; j <= 9; j++){
+                let quiz = {
+                    question: `${i} x ${j}`,
+                    answer: i*j
+                };
+                quizBank.push(quiz);
+            }   
+        }
+
+        const quizArr = [];
+
+        document.getElementById('btn-question').addEventListener('click', ()=>{
+            let count = Number(document.getElementById('count').value);
+            if (isNaN(count)) {
+                count = 0;
+            }
+
+            quizArr.length = 0; // 배열 비우기
+            getQuiz(quizArr, count);
+            
+            let str = '';
+            quizArr.forEach((v, i)=>{
+                str += `<div class="quiz">`;
+                    str += `<span class="number">${i+1}. </span>`;
+                    str += `<span class="question">${v.question}</span>`;
+                    str += `<span class="equal"> = </span>`
+                    str += `<input type="text" class="input">`;
+                    str += `<span class="result"></span>`;
+                str += `</div>`;
+            });
+            
+            document.getElementById('quizContainer').innerHTML = str;
+        })
+
+        function getQuiz(arr, count){
+            if (count > quizBank.length) {
+                count = quizBank.length;
+            }
+
+            const setQuiz = new Set();
+            while (setQuiz.size < count) {
+                setQuiz.add(Math.floor(Math.random()*quizBank.length));
+            }
+            
+            setQuiz.forEach(v=>{
+                arr.push(quizBank[v]);
+            })
+        }
+
+        document.getElementById('btn-answer').addEventListener('click', ()=>{
+            const input = document.querySelectorAll('.input')
+            const result = document.querySelectorAll('.result')
+            let correct = 0;
+            let wrong = 0;
+            for (let i = 0; i < quizArr.length; i++){
+                if (input[i].value == quizArr[i].answer) {
+                    result[i].innerText = '⭕';
+                    correct++;
+                } else {
+                    result[i].innerText = '❌';
+                    wrong++;
+                }
+            }
+
+            const printResult = document.getElementById('printResult');
+            let str = `문제 수: ${correct + wrong} / 맞춘 문제 수: ${correct} / 틀린 문제 수: ${wrong}\n`;
+            str += `정답률: ${(correct / (correct + wrong) * 100).toFixed(2)}%`;
+            printResult.innerText = str;
+        })
+    </script>
+</body>
+</html>

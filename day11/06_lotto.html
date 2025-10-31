@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        set을 이용한 로또 만들기
+    </h1>
+    <!-- 
+        1~45까지 랜덤수 6개 중복되지 않게 추출 => 출력
+        set 중복제거 후 => 배열
+    -->
+    
+    <button id="makeRandom">랜덤번호 6자리 생성(출력)</button>
+    <h1 id="printNumber">로또번호 출력</h1>
+
+    <button id="makeRandom2">당첨번호 7자리 생성(출력)</button>
+    <h1 id="printNumber2">당첨번호 출력</h1>
+
+    <button id="ranking">당첨 확인</button>
+    <h1 id="printRanking">당첨여부 출력</h1>
+
+    <script>
+        let arrUser = [];
+        let arrLotto = [];
+
+        document.getElementById('makeRandom').addEventListener('click', ()=>{
+            const setUser = new Set();
+            while (setUser.size < 6) {
+                setUser.add(Math.floor(Math.random()*45)+1);
+            }
+
+            arrUser = [...setUser].sort((a, b) => {return a - b});
+            document.getElementById('printNumber').innerText = arrUser;
+        });
+
+        document.getElementById('makeRandom2').addEventListener('click', ()=>{
+            const setLotto = new Set();
+            while (setLotto.size < 7) {
+                setLotto.add(Math.floor(Math.random()*45)+1);
+            }
+            
+            let bonus = [...setLotto].pop();
+            setLotto.delete(bonus);
+            arrLotto = [...setLotto].sort((a, b) => {return a - b});
+
+            document.getElementById('printNumber2').innerText = arrLotto + ' + ' + bonus;
+        });
+
+        document.getElementById('ranking').addEventListener('click', ()=>{
+            let count = 0;
+            let bonus = false;
+            arrLotto.forEach((v, i) => {
+                if (arrUser.includes(v)){
+                    if (i < 6) {
+                        count++;
+                    } else {
+                        bonus = true;
+                    }
+                }
+            });
+            
+            const printRanking = document.getElementById('printRanking');
+            if (count == 3) {
+                printRanking.innerText = '5등';
+            } else if (count == 4) {
+                printRanking.innerText = '4등';
+            } else if (count == 5) {
+                if (bonus) {
+                    printRanking.innerText = '2등';
+                } else {
+                    printRanking.innerText = '3등';
+                }
+            } else if (count == 6) {
+                printRanking.innerText = '1등';
+            } else {
+                printRanking.innerText = '꽝';
+            }
+        });
+    </script>
+</body>
+</html>

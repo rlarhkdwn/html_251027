@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        과목, 점수 input 2개 생성
+        추가 버튼 클릭 => map에 저장
+        출력 버튼 클릭 => ul => li 형태로 출력 html : 89
+        결과 버튼 클릭 => 합계, 평균, 합격여부(60점 이상이면 pass) => h3
+    -->
+
+    <fieldset>
+        <legend>과목추가</legend>
+        과목 : <input type="text" id="subject"><br>
+        점수 : <input type="text" id="score"><br>
+        <button type="button" id="add">추가</button>
+        <button type="button" id="print">출력</button>
+        <button type="button" id="result">결과</button>
+    </fieldset>
+
+    <ul id="ul"></ul>
+    <h3 id="h3"></h3>
+
+    <script>
+        const myMap = new Map();
+
+        document.getElementById('add').addEventListener('click', ()=>{
+            const subject = document.getElementById('subject');
+            const score = document.getElementById('score');
+
+            if (subject.value == '' || score.value == ''){
+                return;
+            }
+            myMap.set(subject.value, score.value);
+
+            subject.value = '';
+            score.value = '';
+        });
+
+        document.getElementById('print').addEventListener('click', ()=>{
+            let str = '';
+            myMap.forEach((v, i) => {
+                str += `<li>${i} : ${v}점</li>`;
+            });
+            document.getElementById('ul').innerHTML = str;
+        });
+
+        document.getElementById('result').addEventListener('click', ()=>{
+            let sum = 0;
+            let avg = 0.00;
+            let pNp = 'Pass';
+            let count = 0;
+
+            myMap.forEach((v) => {
+                sum += Number(v);
+                count++;
+            });
+
+            avg = Math.floor(sum / count, 2);
+            pNp = avg >= 60.00 ? 'Pass' : 'nonPass';
+
+            document.getElementById('h3').innerText = `합계 : ${sum}점\n평균 : ${avg}점\n합격여부 : ${pNp}`;
+        });
+    </script>
+</body>
+</html>

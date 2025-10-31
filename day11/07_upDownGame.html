@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1~99까지의 숫자 중 하나를 랜덤으로 선택하여 해당 숫자를 맞추는 게임
+    -->
+    <div>
+        <button id="random">랜덤 숫자 생성 버튼</button>
+        <button id="re">다시시도</button>
+        <h1 id="printMsg"></h1>
+    </div>
+    <div>
+        <input type="text" id="myNum">
+        <button id="compareNum">제출!</button>
+        <h1 id="result"></h1>
+    </div>
+
+    <script>
+        // 새로고침 (다시시도)
+        document.getElementById('re').addEventListener('click', ()=>{
+            window.location.reload();
+            // location.reload(); // window는 생략가능
+        });
+
+        let comNum = 0;
+        let ready = false;
+        let tryCount = 0;
+
+        document.getElementById('random').addEventListener('click', ()=>{
+            document.getElementById('result').innerText = '랜덤수를 생성했습니다.(1~99)\n';
+            comNum = Math.floor(Math.random()*99)+1;
+            ready = true;
+        });
+
+        document.getElementById('compareNum').addEventListener('click', ()=>{
+            let result = document.getElementById('result');
+            let guess = Number(document.getElementById('myNum').value);
+
+            if (!ready) {    
+                result.innerText = '랜덤수가 생성되지 않았습니다.\n';
+                document.getElementById('myNum').value = '';
+                return;
+            }
+
+            if (isNaN(guess) || guess <= 0 || guess >= 100) {
+                result.innerText += '1~99까지의 숫자만 가능합니다.\n'
+            } else if (guess > comNum) {
+                tryCount++;
+                result.innerText += `down! 시도한 횟수${tryCount}\n`;
+            } else if (guess < comNum) {
+                tryCount++;
+                result.innerText += `up! 시도한 횟수${tryCount}\n`;
+            } else {
+                tryCount++;
+                result.innerText += `정답! 시도한 횟수${tryCount}\n`;
+                tryCount = 0;
+                ready = false;
+            }
+
+            document.getElementById('myNum').value = '';
+        });
+
+    </script>
+</body>
+</html>
