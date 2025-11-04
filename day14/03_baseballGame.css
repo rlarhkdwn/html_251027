@@ -1,0 +1,59 @@
+body>.container{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+body>.container>.left>h1{
+    height: 70px;
+    line-height: 70px;
+    margin: 0 auto 20px;
+}
+body>.container>.left>.input-box{
+    display: flex;
+    justify-content: left;
+    font-size: 20px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid black;
+}
+body>.container>.left>.input-box>input{
+    margin-left: 5px;
+    width: 200px;
+}
+body>.container>.left>ol{
+    padding-left: 0;
+    list-style-type: none;
+    font-size: 30px;
+    
+    max-height: 700px;      /* 표시할 최대 높이 설정 */
+    overflow-y: auto;       /* 내용이 넘치면 세로 스크롤 생성 */
+    margin-top: 10px;       /* 위 요소와 간격(선택사항) */
+}
+body>.container>.left>.input-box>button{
+    margin-left: 10px;
+}
+body>.container>.right>.btn-box>button{
+    width: 300px;
+    height: 70px;
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+body>.container>.right>.guess-box>.header{
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+}
+body>.container>.right>.guess-box p{
+    margin: 0;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+body>.container>.right>.guess-box>.body>.number-box{
+    display: flex;
+    justify-content: space-around;
+    margin: 25px auto;
+}

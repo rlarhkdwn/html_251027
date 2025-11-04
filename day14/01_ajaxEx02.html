@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitcount+Grid+Single:wght@100..900&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: "Permanent Marker", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }  
+        header{
+            text-align: center;
+            padding: 50px;
+        }
+        header>h1{
+            font-size: 50px;
+            font-weight: 700;
+        }
+        header>p{
+            font-size: 35px;
+            font-weight: 500;
+        }
+        section{
+            display: flex;
+            justify-content: center;
+        }
+        section>.box{
+            margin: 0 50px;
+            width: 400px;
+        }
+        section>.box>h3{
+            font-size: 35px;
+            font-weight: 700;
+        }
+        section>.box>p, section>.box li{
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json -->
+    <header id="header"></header>
+    <section id="section"></section>
+
+    <script>
+        // html문서가 완전히 로드되면 호출
+        document.addEventListener('DOMContentLoaded', superheroes);
+
+        async function superheroes() {
+            fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+            .then(response => response.json())
+            .then(json => printData(json)) // 성공시
+            .catch(error => console.log(error)) // 실패시
+        }
+        
+        function printData(obj){
+            const header = document.getElementById('header');
+            const section = document.getElementById('section');
+
+
+            let headerHTML = ``;
+            headerHTML += `<h1>${obj['squadName']}</h1>`;
+            headerHTML += `<p>HomeTown : ${obj['homeTown']} // Formed : ${obj['formed']}</p>`;
+            header.innerHTML = headerHTML;
+
+
+            let members = obj['members'];
+            let sectionHTML = ``;
+            for (let m of members) {
+                sectionHTML += `<div class="box">`;
+                    sectionHTML += `<h3>${m['name']}</h3>`;
+                    sectionHTML += `<p>SecretIdentity : ${m['secretIdentity']}</p>`;
+                    sectionHTML += `<p>Age : ${m['age']}</p>`;
+                    sectionHTML += `<p>SuperPowers : </p>`;
+                    sectionHTML += `<ul>`;
+                    for (let s of m['powers']) {
+                        sectionHTML += `<li>${s}</li>`;
+                    }
+                    sectionHTML += `</ul>`;
+                sectionHTML += `</div>`;
+            }
+            section.innerHTML = sectionHTML; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        body>h1{
+            margin-top: 50px;
+        }
+        body>form{
+            width: 700px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body>form>input{
+            width: 350px;
+            height: 30px;
+            box-sizing: border-box;
+            border: none;
+        }
+        body>form>button{
+            width: 50px;
+            height: 30px;
+            box-sizing: border-box;
+            margin-left: 5px;
+            border: none;
+            background-color: white;
+            font-weight: 700;
+        }
+        body>div>ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body>div>ul>li{
+            display: flex;
+            justify-content: center;
+        }
+        body>div>ul>li>p{
+            width: 650px;
+            height: 50px;
+            text-align: left;
+            box-sizing: border-box;
+            padding: 0 20px;
+            margin: 0;
+            line-height: 50px;
+            white-space: nowrap; /* 텍스트를 한 줄로 */
+            overflow: hidden; /* 넘침 숨김 */
+            text-overflow: ellipsis; /* 말줄임표(...) 표시 */
+        }
+        body>div>ul>li>button{
+            width: 50px;
+            height: 50px;
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+        }
+        body>div>ul>li:nth-child(odd)>p, body>div>ul>li:nth-child(odd)>button{
+            background-color: rgb(252, 255, 207);
+        }
+        body>div>ul>li:nth-child(even)>p, body>div>ul>li:nth-child(even)>button{
+            background-color: rgb(199, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <h1>여행 준비물 점검 목록</h1>
+    <form action="">
+        <input type="text" id="item">
+        <button type="button" id="btn">추가</button>
+    </form>
+    <div>
+        <ul id="itemList"></ul>
+    </div>
+
+    <script>
+        let itemList = [];
+
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let item = document.getElementById('item');
+            let value = item.value.trim();
+            if (value === '') return; // 공백 입력 방지
+            itemList.push(value);
+            
+            document.getElementById('itemList').innerHTML = getHTML();
+            item.value = '';
+        });
+
+        document.getElementById('itemList').addEventListener('click', (e)=>{
+            // class : 배열로 리턴 classList => DOMtokenList
+            // value == 'delete-btn' / id == 'delete-btn'
+            // classList는 배열이기 때문에 contains를 이용해서 확인
+            // data-no  e.target.dataset.no == ''
+            if (!e.target.classList.contains('delete-btn')) {
+                return;
+            }
+            let id = e.target.id;
+            let idx = Number(id.split('-').pop());
+            itemList.splice(idx,1);
+            document.getElementById('itemList').innerHTML = getHTML();
+        })
+
+        function getHTML(){
+            let str = ``;
+            for (let i = 0; i < itemList.length; i++) {
+                str += `<li>`;
+                    str += `<p>${i + 1}. ${itemList[i]}</p>`;
+                    str += `<button class="delete-btn" id="delete-btn-${i}">❌</button>`;
+                str += `</li>`;
+            }
+            return str;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="03_baseballGame.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1 id="comMsg">게임시작 버튼을 눌러주세요!</h1>
+            <div class="input-box">
+                숫자입력 : <input type="text" id="userNum">
+                <button id="match">확인</button>
+            </div>
+            <ol id="tries"></ol>
+        </div>
+        <div class="right">
+            <div class="btn-box">
+                <button id="startBtn">게임시작</button>
+                <button id="resetBtn">다시하기</button>
+            </div>
+            <div class="guess-box">
+                <div class="header"></div>
+                <div class="body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+            === 게임 룰 ===
+            1. 게임시작 전 입력 금지
+            2. 중복 값x
+            3. 반드시 3자리(0~9)
+            4. 문자x
+        */
+        // comNum 배열과, 사용자 value 값의 배열 비교
+        // 값 위치가 동일하면 strike, 값만 동일하면 ball
+        // 일치하는 값이 없다면 out
+
+
+        let comNum = [];
+        let arrSize = 3; // 자리수
+        let start = false;
+        let end = false;
+        let tryCount = 0;
+
+
+        // .guess-box 내부 구조 생성
+        const body = document.querySelector('.guess-box .body');
+        const header = document.querySelector('.guess-box .header');
+        const rows = 10;
+        const cols = arrSize;
+
+        for (let i = 0; i < cols; i++) {
+            const p = document.createElement('p');
+            p.classList.add('guess');
+            p.id = 'guess' + i
+            p.textContent = '?';
+            header.appendChild(p);
+        }
+
+        for (let i = 0; i < rows; i++) {
+            const numberBox = document.createElement('div');
+            numberBox.classList.add('number-box');
+
+            for (let j = 0; j < cols; j++) {
+                const p = document.createElement('p');
+                p.classList.add('number');
+                p.dataset.row = i;
+                p.dataset.col = j;
+                p.textContent = i;
+                numberBox.appendChild(p);
+            }
+
+            body.appendChild(numberBox);
+        }
+
+
+        // 게임시작 버튼
+        document.getElementById('startBtn').addEventListener('click', ()=>{
+            // 중복 클릭 방지
+            if (start) {
+                return;
+            }
+            
+            document.getElementById('comMsg').innerText = '게임시작!';
+            start = true;
+
+            // 숫자 배열 생성
+            const setComNum = new Set();
+            let i = 0;
+            while (setComNum.size < arrSize) {
+                setComNum.add(Math.floor(Math.random()*10));
+            };
+            comNum = [...setComNum];
+        });
+
+
+        // 다시시작 버튼
+        document.getElementById('resetBtn').addEventListener('click', ()=>{
+            window.location.reload();
+        });
+
+
+        // 숫자 입력 버튼
+        document.getElementById('match').addEventListener('click', ()=>{
+            let inputBox = document.getElementById('userNum');
+
+            // 룰 체크
+            if (!checkValidation(inputBox)) {
+                inputBox.value = '';
+                return;
+            }
+            
+            // 게임 종료시
+            if (end) {
+                alert('다시하기 버튼을 눌러주세요');
+                return;
+            }
+            
+            tryCount++;
+            const userNum = [...inputBox.value].map(Number);
+            let result = match(comNum, userNum);
+
+            let str = `<li>${tryCount}. ${inputBox.value} : ${result}</li>`;
+            document.getElementById('tries').innerHTML += str;
+            inputBox.value = '';
+        });
+
+
+        // 게임 룰 확인
+        function checkValidation(inputBox){
+            /*
+                === 게임 룰 ===
+                1. 게임시작 전 입력 금지
+                2. 중복 값x
+                3. 반드시 3자리(0~9)
+                4. 문자x
+            */
+            if (start === false) {
+                alert('게임시작 버튼을 눌러주세요')
+                return false;
+            }
+            
+            if (isNaN(Number(inputBox.value))) {
+                alert('숫자만 입력하세요');
+                return false;
+            }
+
+            if (inputBox.value.length !== arrSize) {
+                alert(`${arrSize}자리 숫자를 입력하세요`)
+                return false;
+            }
+
+            if (inputBox.value.length !== (new Set(inputBox.value)).size) {
+                alert('각 자리의 숫자는 중복될 수 없습니다.')
+                return false;
+            }
+
+            if (Number(inputBox.value) < 0) {
+                alert('음수는 입력할 수 없습니다.')
+                return false;
+            }
+
+            if (inputBox.value.includes('.')) {
+                alert('정수만 입력할 수 있습니다.')
+                return false;
+            }
+            return true;
+        }
+        
+
+        // 배열 비교후 결과 리턴
+        function match(comNum, userNum) {
+            let strike = 0;
+            let ball = 0;
+            for (let i = 0; i < arrSize; i++) {
+                if (userNum[i] === comNum[i]) strike++;
+                else if (comNum.includes(userNum[i])) ball++;
+            }
+
+            if (strike === comNum.length) {
+                end = true;
+                return 'SUCCESS!!';
+            }
+            if (strike === 0 && ball === 0) {
+                return 'OUT!!'
+            }
+            return `${strike}S ${ball}B`
+        }
+
+
+        // 클릭한 숫자를 '⭕', '❌'로 표시하기
+        const correctWorng = Array.from({ length: 3 }, () => Array(10).fill(0));
+        document.querySelector('.body').addEventListener('click', (e)=>{
+            if (!e.target.classList.contains('number')) {
+                return;
+            }
+
+            let row = e.target.dataset.row;
+            let col = e.target.dataset.col;
+
+            if (e.target.innerText === '⭕') {
+                e.target.innerText = '❌';
+                correctWorng[col][row] = '❌';
+            } else if (e.target.innerText === '❌') {
+                e.target.innerText = row;
+                correctWorng[col][row] = row;
+            } else {
+                e.target.innerText = '⭕';
+                correctWorng[col][row] = '⭕';
+            }
+
+            // '⭕'이 1개 이거나 '❌'가 9개인경우 ?를 숫자로 확정
+            const guess = document.getElementById('guess' + col);
+
+            let correct = correctWorng[col].filter(x => x === '⭕').length;
+            if (correct === 1) {
+                guess.innerText = correctWorng[col].indexOf('⭕');
+                return;
+            }
+
+            let wrong = correctWorng[col].filter(x => x === '❌').length;
+            if (wrong === 9) {
+                guess.innerText = correctWorng[col].filter(x => !isNaN(Number(x)))[0];
+                return;
+            }
+            guess.innerText = '?';
+        })
+    </script>
+</body>
+</html>
