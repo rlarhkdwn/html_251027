@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        .container{
+            width: 300px;
+            background-color: rgb(52, 138, 110);
+            /* 화면의 정중앙 위치 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            border-radius: 10px;
+            padding: 20px 30px;
+        }
+        .container .text-field, .btn{
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+        }
+        .container .btn{
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .container .link{
+            margin-top: 30px;
+        }
+        .container .link>a{
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="text" class="text-field" name="id" id="id" placeholder="아이디">
+            <input type="password" class="text-field" name="pw" id="pw" placeholder="비밀번호">
+            <input type="submit" class="btn" id="btn" value="로그인" disabled>
+        </form>
+        <div class="link">
+            <a href="">비밀번호를 잊어버리셨나요</a>
+        </div>
+    </div>
+
+    <script>
+        // event input
+        // id : 8자 이상
+        // pw : 영어, 숫자, 특수문자 1개씩을 포함한 8자 이상
+        // 두 조건이 맞을때만 버튼 disable 상태 해지
+        // 객체.disabled = true => 비활성화 상태
+        // 객체.disabled = false => 활성화 상태
+        // regExp
+
+        const id = document.getElementById('id');
+        const pw = document.getElementById('pw');
+        const btn = document.getElementById('btn');
+
+        document.querySelector('form').addEventListener('input', (e)=>{
+            if (e.target.id !== 'id' && e.target.id !== 'pw') {
+                return;
+            }
+            
+            if (checkRegExp(id.value, pw.value)) {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            };
+        })
+
+        function checkRegExp(id, pw){
+            if (id.length >= 8 && pw.match(/[a-z+]/i) && pw.match(/[0-9+]/) && pw.match(/[!@#$%^&*()_\-+=.,?]/) && pw.length >= 8) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

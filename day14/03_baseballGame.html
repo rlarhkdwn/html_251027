@@ -194,7 +194,7 @@
 
 
         // 클릭한 숫자를 '⭕', '❌'로 표시하기
-        const correctWorng = Array.from({ length: 3 }, () => Array(10).fill(0));
+        const correctWorng = Array.from({ length: arrSize }, () => Array(10).fill(0));
         document.querySelector('.body').addEventListener('click', (e)=>{
             if (!e.target.classList.contains('number')) {
                 return;
