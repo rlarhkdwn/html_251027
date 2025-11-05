@@ -81,9 +81,12 @@
         })
 
         function checkRegExp(id, pw){
-            if (id.length >= 8 && pw.match(/[a-z+]/i) && pw.match(/[0-9+]/) && pw.match(/[!@#$%^&*()_\-+=.,?]/) && pw.length >= 8) {
+            if (id.length >= 8 && pw.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)){
                 return true;
             }
+            // if (id.length >= 8 && pw.match(/[a-z+]/i) && pw.match(/[0-9+]/) && pw.match(/[!@#$%^&*()_\-+=.,?]/) && pw.length >= 8) {
+            //     return true;
+            // }
             return false;
         }
     </script>
